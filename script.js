@@ -48,12 +48,19 @@ class Deck {
     return this;
   }
 }
+//EVERYTHING ABOVE WORKS
+//EVERYTHING ABOVE WORKS
+//EVERYTHING ABOVE WORKS
+//EVERYTHING ABOVE WORKS
+//EVERYTHING ABOVE WORKS
+//EVERYTHING ABOVE WORKS
+//EVERYTHING ABOVE WORKS
+//EVERYTHING ABOVE WORKS
+//EVERYTHING ABOVE WORKS
+//EVERYTHING ABOVE WORKS
 
 class Game {
-  constructor() {
-    this.lucky1 = Math.floor(Math.random() * player1.length);
-    this.lucky2 = Math.floor(Math.random() * player2.length);
-  }
+  constructor(lucky1, luck2) {}
   inDeck() {
     //asigning PLAYERS CARDS UNTILL DESK ARRAY IS EMPTY
     while (deck.length != 0) {
@@ -71,8 +78,10 @@ class Game {
     loop();
   }
   afterDeck() {
-    console.log("player1sCard  " + player1[lucky1].Rank);
-    console.log("player2sCard  " + player2[lucky2].Rank);
+    let lucky1 = Math.floor(Math.random() * player1.length);
+    let lucky2 = Math.floor(Math.random() * player2.length);
+    console.log(player1[lucky1].Rank);
+    console.log(player2[lucky2].Rank);
     console.log(player1.length);
     console.log(player2.length);
     if (player1[lucky1].Rank > player2[lucky2].Rank) {
@@ -143,5 +152,5 @@ console.log(player1);
 console.log(player2);
 
 const Game1 = new Game();
-Game1.playTheGame();
+Game1.afterDeck();
 console.log(Game1);
