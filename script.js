@@ -152,5 +152,5 @@ console.log(player1);
 console.log(player2);
 
 const Game1 = new Game();
-Game1.afterDeck();
+Game1.playTheGame();
 console.log(Game1);
