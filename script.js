@@ -1,18 +1,10 @@
 class Deck {
-  constructor(suitd, values, rank) {
-    this.rank = rank;
-    this.suit = suit;
-    this.value = value;
-    this.deck = []; //LOCAL VARIABLE
-    this.reRuns = 0;
-    this.card = {};
-    this.userOnePoints = userOnePoints;
-    this.bigNum = bigNum;
+  constructor() {
+    this.deckLength = 52;
 
-    this.userTwoPoints = userTwoPoints;
-    this.userOne = []; //EMPTY ARRAY FOR FIRST PLAYER
-    this.userTwo = []; //EMPTY ARRAY FOR SECOND PLAYER
-    const suits = ["spades", "diamonds", "clubs", "hearts"]; //ARRAY OF SUITS
+    this.deck = []; //LOCAL VARIABLE
+
+    const suits = ["spades", "diamonds", "clubs", "hearts"];
     const values = [
       "2",
       "3",
@@ -27,7 +19,7 @@ class Deck {
       "Q",
       "K",
       "A"
-    ]; //ARRAY IF VALUES
+    ];
     const rank = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
     for (let i = 0; i < suits.length; i++) {
       for (let x = 0; x < values.length; x++) {
@@ -41,7 +33,8 @@ class Deck {
     } //ARRAY OF POINTS OF CARDS
   }
   shufflerMaster() {
-    bigNum = Math.floor(Math.random() * 5100);
+    let shuffled = [];
+    let bigNum = Math.floor(Math.random() * 5100);
     const { deck } = this; //got this from wsvincet
     //IT shuffles them
     while (bigNum != 1) {
@@ -54,21 +47,12 @@ class Deck {
     }
     return this;
   }
-
-  dealerMaster() {
-    //POPS 2 CARDS OFF DECK AND PLACES THEM INTO USERS HANDS
-    if (deck.length !== 0) {
-      userOne.push(deck.pop());
-      userTwo.push(deck.pop());
-      console.log(deck.length + " cards Remaining in deck pile");
-    }
-  }
 }
 
 class Game {
   constructor() {
-    this.lucky1 = Math.floor(Math.random() * userOne.length);
-    this.lucky2 = Math.floor(Math.random() * userTwo.length);
+    this.lucky1 = Math.floor(Math.random() * player1.length);
+    this.lucky2 = Math.floor(Math.random() * player2.length);
   }
   inDeck() {
     //asigning PLAYERS CARDS UNTILL DESK ARRAY IS EMPTY
@@ -87,41 +71,38 @@ class Game {
     loop();
   }
   afterDeck() {
-    console.log("UserOnesCard  " + userOne[lucky1].Rank);
-    console.log("UserTwosCard  " + userTwo[lucky2].Rank);
-    console.log(userOne.length);
-    console.log(userTwo.length);
-    if (userOne[lucky1].Rank > userTwo[lucky2].Rank) {
-      userOne.push(userTwo.pop());
-      console.log("USERONE WON");
+    console.log("player1sCard  " + player1[lucky1].Rank);
+    console.log("player2sCard  " + player2[lucky2].Rank);
+    console.log(player1.length);
+    console.log(player2.length);
+    if (player1[lucky1].Rank > player2[lucky2].Rank) {
+      player1.push(player2.pop());
+      console.log("player1 WON");
     } else {
-      userTwo.push(userOne.pop());
-      console.log("USERTWO WON");
+      player2.push(player1.pop());
+      console.log("player2 WON");
     }
   }
 
   loop() {
-    while (userOne.length != 0 && userTwo.length != 0) {
-      console.log("UserOnesDeckIs " + userOne.length);
-      console.log("UserTwoDeckIs " + userTwo.length);
+    while (player1.length != 0 && player2.length != 0) {
+      console.log("player1sDeckIs " + player1.length);
+      console.log("player2DeckIs " + player2.length);
 
       afterDeck();
     }
   }
 
-  // console.log(userOne); NOT REVLANT
-  // console.log(userTwo);
+  // console.log(player1); NOT REVLANT
+  // console.log(player2);
 
   playTheGame() {
-    if (userOne[userOne.length - 1].Rank > userTwo[userTwo.length - 1].Rank) {
-      userOne.push(userTwo.pop());
-      userOnePoints += 1;
-      userTwoPoints -= 1;
+    if (player1[player1.length - 1].Rank > player2[player2.length - 1].Rank) {
+      player1.push(player2.pop());
     } else if (
-      userOne[userOne.length - 1].Rank < userTwo[userTwo.length - 1].Rank
+      player1[player1.length - 1].Rank < player2[player2.length - 1].Rank
     ) {
-      userTwo.push(userOne.pop());
-      userTwoPoints += this.userOnePoints -= 1;
+      player2.push(player1.pop());
     } else {
       war();
     }
@@ -131,21 +112,21 @@ class Game {
     reRuns += 1;
     dealerMaster();
 
-    if (userOne[userOne.length - 1].Rank > userTwo[userTwo.length - 1].Rank) {
+    if (player1[player1.length - 1].Rank > player2[player2.length - 1].Rank) {
       while (reRuns != 0) {
-        userOne.push(userTwo.pop());
-        userOnePoints += 1;
-        userTwoPoints -= 1;
+        player1.push(player2.pop());
+        player1Points += 1;
+        player2Points -= 1;
         reRuns -= 1;
       }
       console.log("War()");
     }
-    if (userOne[userOne.length - 1].Rank < userTwo[userTwo.length - 1].Rank) {
+    if (player1[player1.length - 1].Rank < player2[player2.length - 1].Rank) {
       while (reRuns != 0) {
-        userTwo.push(userOne.pop());
+        player2.push(player1.pop());
         reRuns -= 1;
-        userTwoPoints += 1;
-        userOnePoints -= 1;
+        player2Points += 1;
+        player1Points -= 1;
       }
       console.log("war()");
     } else {
@@ -153,7 +134,14 @@ class Game {
     }
   } //ends war function
 }
-const deck1 = new Deck();
-deck1.shufflerMaster();
-console.log(deck1.deck);
-console.log(Object.values);
+
+const Deck1 = new Deck();
+Deck1.shufflerMaster();
+let player1 = Deck1.deck.slice(0, 26);
+let player2 = Deck1.deck.slice(26, 52);
+console.log(player1);
+console.log(player2);
+
+const Game1 = new Game();
+Game1.playTheGame();
+console.log(Game1);
