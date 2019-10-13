@@ -33,10 +33,9 @@ class Deck {
     } //ARRAY OF POINTS OF CARDS
   }
   shufflerMaster() {
-    let shuffled = [];
     let bigNum = Math.floor(Math.random() * 5100);
     const { deck } = this; //got this from wsvincet
-    //IT shuffles them
+
     while (bigNum != 1) {
       bigNum -= 1;
       let scrambler1 = Math.floor(Math.random() * 52);
@@ -61,47 +60,9 @@ class Deck {
 
 class Game {
   constructor(lucky1, luck2) {}
-  inDeck() {
-    //asigning PLAYERS CARDS UNTILL DESK ARRAY IS EMPTY
-    while (deck.length != 0) {
-      dealerMaster();
-      playTheGame();
-    }
-  }
+
   //END OF FUNCTION
   //END OF FUNCTION
-
-  wholeGame() {
-    //RUNS THE WHOLE GAME
-    shufflerMaster();
-    inDeck();
-    loop();
-  }
-  afterDeck() {
-    let lucky1 = Math.floor(Math.random() * player1.length);
-    let lucky2 = Math.floor(Math.random() * player2.length);
-    console.log(player1[lucky1].Rank);
-    console.log(player2[lucky2].Rank);
-    console.log(player1.length);
-    console.log(player2.length);
-    if (player1[lucky1].Rank > player2[lucky2].Rank) {
-      player1.push(player2.pop());
-      console.log("player1 WON");
-    } else {
-      player2.push(player1.pop());
-      console.log("player2 WON");
-    }
-  }
-
-  loop() {
-    while (player1.length != 0 && player2.length != 0) {
-      console.log("player1sDeckIs " + player1.length);
-      console.log("player2DeckIs " + player2.length);
-
-      afterDeck();
-    }
-  }
-
   // console.log(player1); NOT REVLANT
   // console.log(player2);
 
@@ -119,13 +80,11 @@ class Game {
 
   war() {
     reRuns += 1;
-    dealerMaster();
 
     if (player1[player1.length - 1].Rank > player2[player2.length - 1].Rank) {
       while (reRuns != 0) {
         player1.push(player2.pop());
-        player1Points += 1;
-        player2Points -= 1;
+
         reRuns -= 1;
       }
       console.log("War()");
@@ -134,14 +93,21 @@ class Game {
       while (reRuns != 0) {
         player2.push(player1.pop());
         reRuns -= 1;
-        player2Points += 1;
-        player1Points -= 1;
       }
       console.log("war()");
     } else {
       war();
     }
   } //ends war function
+
+  loop() {
+    while (player1.length != 0 && player2.length != 0) {
+      console.log("player1sDeckIs " + player1.length);
+      console.log("player2DeckIs " + player2.length);
+
+      afterDeck();
+    }
+  }
 }
 
 const Deck1 = new Deck();
@@ -151,6 +117,6 @@ let player2 = Deck1.deck.slice(26, 52);
 console.log(player1);
 console.log(player2);
 
-const Game1 = new Game();
-Game1.playTheGame();
-console.log(Game1);
+const Game2 = new Game();
+Game2.playTheGame();
+console.log(Game2);
