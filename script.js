@@ -67,11 +67,9 @@ class Game {
   // console.log(player2);
 
   playTheGame() {
-    if (player1[player1.length - 1].Rank > player2[player2.length - 1].Rank) {
+    if (player1[0].Rank > player2[0].Rank) {
       player1.push(player2.pop());
-    } else if (
-      player1[player1.length - 1].Rank < player2[player2.length - 1].Rank
-    ) {
+    } else if (player1[0].Rank < player2[0].Rank) {
       player2.push(player1.pop());
     } else {
       war();
@@ -81,7 +79,7 @@ class Game {
   war() {
     reRuns += 1;
 
-    if (player1[player1.length - 1].Rank > player2[player2.length - 1].Rank) {
+    if (player1[0].Rank > player2[0].Rank) {
       while (reRuns != 0) {
         player1.push(player2.pop());
 
@@ -89,7 +87,7 @@ class Game {
       }
       console.log("War()");
     }
-    if (player1[player1.length - 1].Rank < player2[player2.length - 1].Rank) {
+    if (player1[0].Rank < player2[0].Rank) {
       while (reRuns != 0) {
         player2.push(player1.pop());
         reRuns -= 1;
@@ -105,7 +103,7 @@ class Game {
       console.log("player1sDeckIs " + player1.length);
       console.log("player2DeckIs " + player2.length);
 
-      afterDeck();
+      this.playTheGame();
     }
   }
 }
@@ -118,5 +116,5 @@ console.log(player1);
 console.log(player2);
 
 const Game2 = new Game();
-Game2.playTheGame();
+Game2.loop();
 console.log(Game2);
