@@ -59,7 +59,9 @@ class Deck {
 //EVERYTHING ABOVE WORKS
 
 class Game {
-  constructor(lucky1, luck2) {}
+  constructor(lucky1, luck2) {
+    this.reRuns = 0;
+  }
 
   //END OF FUNCTION
   //END OF FUNCTION
@@ -72,14 +74,14 @@ class Game {
     } else if (player1[0].Rank < player2[0].Rank) {
       player2.push(player1.pop());
     } else {
-      war();
+      this.war();
     }
   }
 
   war() {
     reRuns += 1;
 
-    if (player1[0].Rank > player2[0].Rank) {
+    if (player1[reRuns].Rank > player2[reRuns].Rank) {
       while (reRuns != 0) {
         player1.push(player2.pop());
 
@@ -87,7 +89,7 @@ class Game {
       }
       console.log("War()");
     }
-    if (player1[0].Rank < player2[0].Rank) {
+    if (player1[reRuns].Rank < player2[reRuns].Rank) {
       while (reRuns != 0) {
         player2.push(player1.pop());
         reRuns -= 1;
