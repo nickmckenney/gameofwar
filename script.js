@@ -59,9 +59,7 @@ class Deck {
 //EVERYTHING ABOVE WORKS
 
 class Game {
-  constructor(lucky1, luck2) {
-    this.reRuns = 0;
-  }
+  constructor(lucky1, luck2) {}
 
   //END OF FUNCTION
   //END OF FUNCTION
@@ -69,35 +67,24 @@ class Game {
   // console.log(player2);
 
   playTheGame() {
-    if (player1[0].Rank > player2[0].Rank) {
-      player1.push(player2.pop());
-    } else if (player1[0].Rank < player2[0].Rank) {
-      player2.push(player1.pop());
+    if (player1[player1.length - 1].Rank > player2[player2.length - 1].Rank) {
+      console.log("PLAYER1 WON");
+      player1.unshift(player2.pop());
+      player1.unshift(player1.pop());
+    } else if (
+      player1[player1.length - 1].Rank < player2[player2.length - 1].Rank
+    ) {
+      console.log("PLAYER 2 WON!");
+      player2.unshift(player2.pop());
+      player2.unshift(player1.pop());
     } else {
       this.war();
     }
   }
 
   war() {
-    reRuns += 1;
-
-    if (player1[reRuns].Rank > player2[reRuns].Rank) {
-      while (reRuns != 0) {
-        player1.push(player2.pop());
-
-        reRuns -= 1;
-      }
-      console.log("War()");
-    }
-    if (player1[reRuns].Rank < player2[reRuns].Rank) {
-      while (reRuns != 0) {
-        player2.push(player1.pop());
-        reRuns -= 1;
-      }
-      console.log("war()");
-    } else {
-      war();
-    }
+    console.log("WARWARWARWARWARWAR!!!!!");
+    player2.unshift(player1.pop());
   } //ends war function
 
   loop() {
