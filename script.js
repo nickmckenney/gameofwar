@@ -84,7 +84,17 @@ class Game {
 
   war() {
     console.log("WARWARWARWARWARWAR!!!!!");
-    player2.unshift(player1.pop());
+    if (player1[player1.length - 2] > player2[player2.length - 2]) {
+      player1.unshift(player2[player2.length - 2]);
+      player1.unshift(player2[player2.length - 1]);
+      player2.pop();
+      player2.pop();
+    } else {
+      player2.unshift(player1[player1.length - 2]);
+      player2.unshift(player1[player1.length - 1]);
+      player1.pop();
+      player1.pop();
+    }
   } //ends war function
 
   loop() {
