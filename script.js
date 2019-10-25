@@ -2,7 +2,7 @@ class Deck {
   constructor() {
     this.deckLength = 52;
 
-    this.deck = []; //LOCAL VARIABLE
+    this.deck = [];
 
     const suits = ["spades", "diamonds", "clubs", "hearts"];
     const values = [
@@ -47,24 +47,9 @@ class Deck {
     return this;
   }
 }
-//EVERYTHING ABOVE WORKS
-//EVERYTHING ABOVE WORKS
-//EVERYTHING ABOVE WORKS
-//EVERYTHING ABOVE WORKS
-//EVERYTHING ABOVE WORKS
-//EVERYTHING ABOVE WORKS
-//EVERYTHING ABOVE WORKS
-//EVERYTHING ABOVE WORKS
-//EVERYTHING ABOVE WORKS
-//EVERYTHING ABOVE WORKS
 
 class Game {
-  constructor(lucky1, luck2) {}
-
-  //END OF FUNCTION
-  //END OF FUNCTION
-  // console.log(player1); NOT REVLANT
-  // console.log(player2);
+  constructor() {}
 
   playTheGame() {
     if (player1[player1.length - 1].Rank > player2[player2.length - 1].Rank) {
@@ -85,11 +70,13 @@ class Game {
   war() {
     console.log("WARWARWARWARWARWAR!!!!!");
     if (player1[player1.length - 2] > player2[player2.length - 2]) {
+      console.log("Player1 Won");
       player1.unshift(player2[player2.length - 2]);
       player1.unshift(player2[player2.length - 1]);
       player2.pop();
       player2.pop();
     } else {
+      console.log("Player2 Won");
       player2.unshift(player1[player1.length - 2]);
       player2.unshift(player1[player1.length - 1]);
       player1.pop();
@@ -116,4 +103,3 @@ console.log(player2);
 
 const Game2 = new Game();
 Game2.loop();
-console.log(Game2);
